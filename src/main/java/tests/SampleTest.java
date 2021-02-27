@@ -1,7 +1,8 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,10 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class SampleTest {
 
     public static void main(String[] args) {
-
-
 //setting the driver executable
-        System.setProperty("webdriver.chrome.driver", ".\\Driver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe");
 
 //Initiating your chromedriver
         WebDriver driver=new ChromeDriver();
@@ -24,10 +23,14 @@ public class SampleTest {
         driver.manage().window().maximize();
 
 //open browser with desried URL
-        driver.get("https://www.google.com");
+        driver.get("https://www.youtube.com");
+        WebElement searchField = driver.findElement(By.id("search"));
+        searchField.sendKeys("Funny Developer Videos");
+        searchField.sendKeys(Keys.ENTER);
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 
 //closing the browser
-        driver.close();
+        //driver.close();
 
     }
 
