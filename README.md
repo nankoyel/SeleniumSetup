@@ -29,4 +29,4 @@ A good place to start when thinking about a good design for your tests is with K
 3. Remove Duplication
 4. Keep it small
 
-Because we are writing tests, it's also a good idea to keep his test desiderata in mind.
+Because we are writing tests, it's also a good idea to keep his [test desiderata](https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3) in mind.
