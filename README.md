@@ -3,7 +3,7 @@
 Use this setup to get started working on a set of small problems to practise your UI Automation skills with Selenium.
 
 #### How to get set up?
-1. Follow the instructions in this video to set up an EC2 instance.
+1. Follow the instructions in [this video](https://youtu.be/vB0rF0ElOT8?t=1146) to set up an EC2 instance.
 2. Follow the instructions in the .ps1 file to get a machine set up that will have a working Selenium dev environment
 
 #### What problems will we solve?
