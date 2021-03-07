@@ -1,37 +1,38 @@
 package tests;
 
-import org.openqa.selenium.*;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.FindBy;
-
-import java.util.concurrent.TimeUnit;
+import org.testng.Assert;
 
 
+import java.util.List;
 
-public class SampleTest {
+import static java.lang.Thread.sleep;
 
-    public static void main(String[] args) {
-//setting the driver executable
-        System.setProperty("webdriver.chrome.driver", "C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe");
+public class SampleTest{
+    public static void main(String[] args) throws InterruptedException{
 
-//Initiating your chromedriver
-        WebDriver driver=new ChromeDriver();
-
-//Applied wait time
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//maximize window
-        driver.manage().window().maximize();
-
-//open browser with desried URL
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         driver.get("https://www.youtube.com");
-        WebElement searchField = driver.findElement(By.id("search"));
-        searchField.sendKeys("Funny Developer Videos");
-        searchField.sendKeys(Keys.ENTER);
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+        // identify element
+        WebElement searchBox=driver.findElement(By.id("search"));
+        searchBox.sendKeys("Puppy");
+        // type enter with sendKeys method and pass Keys.RETURN
+        searchBox.sendKeys(Keys.RETURN);
+        sleep(6000);
 
-//closing the browser
-        //driver.close();
+        List<WebElement>  contents = driver.findElements(By.cssSelector("ytd-search-pyv-renderer #img"));
 
+        String srcAttribute = contents.get(0).getAttribute("src");
+        System.out.println(srcAttribute);
+
+        Assert.assertEquals(srcAttribute, "https://i2.ytimg.com/vi/IPQAazegMQg/0.jpg");
+        driver.close();
     }
-
 }
