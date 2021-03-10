@@ -9,7 +9,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
 
+
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -20,6 +22,8 @@ public class SampleTest{
                 "C:\\ProgramData\\chocolatey\\lib\\chromedriver\\tools\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.youtube.com");
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         // identify element
         WebElement searchBox=driver.findElement(By.id("search"));
         searchBox.sendKeys("Puppy");
